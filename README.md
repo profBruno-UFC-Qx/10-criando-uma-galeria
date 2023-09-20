@@ -1,6 +1,6 @@
 ## Descrição
 
-Neste exercício, você irá criar uma página web que exibe um site de notícias que deverá ser estilizado.
+Neste exercício, você irá criar uma página web que exibe uma galeria de imagens que deverá ser estilizado.
 
 O objetivo deste exercício é praticar o uso de seletores CSS pseudo-classes.
 
@@ -11,77 +11,47 @@ O objetivo deste exercício é praticar o uso de seletores CSS pseudo-classes.
 * src/js/script.js -> quando for necessário alterar JavaScript
 
 ## Instruções:
- - O **index.html** possui o código a seguir:
+
+ 1. O arquivo **index.html** possui o código a seguir:
 
 ```html
-<header>
-  <h1>Mantenha-se informado</h1>
-  <nav>
-    <ul>
-      <li><a href="#">Principal</a></li>
-      <li><a href="#">Sobre nós</a></li>
-      <li><a href="#">Contato</a></li>
-    </ul>
-  </nav>
-</header>
-<main>
-  <section>
-    <h2>Seja bem-vindo!</h2>
-    <p>Aqui você vai ficar antenado sobre tudo!.</p>
-  </section>
-  <section id="artigos-em-destaque">
-    <h2>Destaques</h2>
-    <ul>
-      <li>
-        <article>
-          <h3><a href="#">Artigo 1</a></h3>
-          <p class="date">Publicado em 01 de Janueiro de 2023</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
-        </article>
-      </li>
-      <li>
-        <article>
-          <h3><a href="#">Artigo 2</a></h3>
-          <p class="date">Publicado em 15 de February de 2023</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
-        </article>
-      </li>
-    </ul>
-  </section>
-  <section id="mais-recentes">
-    <h2>Mais recentes</h2>
-    <ul>
-      <li>
-        <article>
-          <h3><a href="#">Artigo 4</a></h3>
-          <p class="date">Publicado em 15 de Março de 2023</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
-        </article>
-      </li>
-      <li>
-        <article>
-          <h3><a href="#">Artigo 5</a></h3>
-          <p class="date">Publicado em 18 de Março de 2023</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in nunc ut felis eleifend sollicitudin sed non ante.</p>
-        </article>
-      </li>
-    </ul>
-  </section>
-</main>
+<h1>My Gallery</h1>
 
+<section id="gallery">
+  <figure>
+    <img src="https://images.unsplash.com/photo-1678662542431-935d32c2aae7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Foto do Lago del Mis, Sospirolo, BL, Italia">
+    <figcaption>Lago del Mis, Sospirolo, BL, Italia</figcaption>
+    <a href="https://images.unsplash.com/photo-1678662542431-935d32c2aae7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">View full size</a>
+  </figure>
+  <figure>
+    <img src="https://images.unsplash.com/photo-1678319167262-cdb624958576?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Foto das montanhas totalmente cobertas por gelo em Intyamon, Rossinière, Switzerland">
+    <figcaption>Intyamon, Rossinière, Switzerland</figcaption>
+    <a href="https://images.unsplash.com/photo-1678319167262-cdb624958576?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80">View full size</a>
+  </figure>
+  <figure>
+    <img src="https://images.unsplash.com/photo-1661107564401-57497d8fe86f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Foto um lago próximo uma estrada em Melchsee Frutt, Kerns, Switzerland">
+    <figcaption>Melchsee Frutt, Kerns, Switzerland</figcaption>
+    <a href="https://images.unsplash.com/photo-1661107564401-57497d8fe86f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80">View full size</a>
+  </figure>
+</section>
+
+<p> Fiquem a vontade para nos enviar a sua foto por meio do <a href="mailto:meu@emai.com">nosso endereço eletrônico</a>
+</p>
+  
 ```
 
-- Escolha os seletores CSS mais adequados e aplique os estilos a seguir alterando o arquivo **estilo.css**:
 
-  - Defina a família de fontes da página inteira como *'Helvetica, Arial, sans-serif'*.
-  - Altere a cor de fundo do cabeçalho (*header*) para *#1282A2*
-  - Altere a cor da fonte dos links de navegação para *#FEFCFB*
-  - Altere a cor da fonte dos títulos das seções para *#001F54*
-  - Altere o tamanho da fonte das datas dos artigos para *14px* 
-  - Altere o estilo da fonte das datas dos artigos para *itálico*
-  - Altere a cor da fonte das datas dos artigos para *#034078*
-  - Defina a cor de fundo dos itens ímpar da lista da seção 'Artigos em destaque' para *#B0E3F1*
-  - Defina a cor do texto dos links localizados dentro de elementos *h3* para *#1282A2*
+1. Posicione o título principal de foram centralizada horizontalmente
+1. Altere a cor da fonte do título principal para *#043a83*, utilize a font-family cursive
+1. Altere a cor do plano de fundo da página inteitra para *azure*
+1. Altere a fonte das legendas da imagem para que tenham o tamanho de *1.2em* e para que elas fiquem em *negrito* e cor #043a83
+1. Altere a cor dos links que vem logo após uma imagem de para *#007bff* e faça com que eles apareça sem o sublinhado
+1. Altere a cor e o estilo do link "View full size" quando o mouse passa por cima dele para *rgb(150, 140, 243)*
+1. As imagens da galeria deve possuir borda sólida de com branca com 15px de largura e arrendonda em *15 pixels*
+1. As imagens devem ocupar 100% da largura da tela e deve ter o plano de fundo na cor branca
+1. Adicione um efeito de sombreamento na cor #9FA3A0 às imagens na galeria de 2 pixels nos eixos x e y, com 15 pixels de blur e 0px de espalhamento* em cada lado
+1. Quando o mouse passar sobre uma imagem e aumento o brilho da imagem em 20%
+1. Adicione o emoji 📷 antes da primeira letra da legenda das imagens sem alterar o código HTML.
 
 ## Recomendações
 

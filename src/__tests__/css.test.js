@@ -20,75 +20,85 @@ afterEach(() => {
 
 
 
-test("A família de fontes da página inteira como 'Helvetica, Arial, sans-serif'", () => {
+test("O título principal deve estar centralizado horizontalmente", () => {
+  const item = screen.getByRole("heading", { level: 1 });
+  let style =  window.getComputedStyle(item);
+  expect(style.textAlign).toBe("center");
+})
+
+test("O título principal deve usar uma fonte cursiva e deve estar na cor #043a83", () => {
+  const item = screen.getByRole("heading", { level: 1 });
+  let style =  window.getComputedStyle(item);
+  expect(style.fontFamily).toBe("cursive");
+  expect(style.color).toBe("rgb(4, 58, 131)");
+})
+
+test("A cor do plano de fundo da página inteitra para *azure*", () => {
   let style =  window.getComputedStyle(document.body);
-  expect(style.fontFamily).toBe("Helvetica, Arial, sans-serif");
+  expect(style.backgroundColor).toBe("azure");
 })
 
-test('A cor de fundo do cabeçalho (header) deve ser #1282A2', () => {
-  const item = screen.getByRole("banner");
-  const style =  window.getComputedStyle(item);
-  expect(style.backgroundColor).toBe('rgb(18, 130, 162)');
+test("A fonte das legendas da imagem devem ter o tamanho de *1.2em*, a cor #1c3072 e devem estar em negrito", () => {
+  const captions = [
+    screen.getByText("Lago del Mis, Sospirolo, BL, Italia"),
+    screen.getByText("Intyamon, Rossinière, Switzerland"),
+    screen.getByText("Melchsee Frutt, Kerns, Switzerland")
+  ]
+  for (const item of captions) {
+    let style =  window.getComputedStyle(item);
+    expect(style.fontSize).toBe("1.2em");
+    expect(style.fontWeight).toBe("bold");
+    expect(style.color).toBe("rgb(4, 58, 131)");
+  }
 })
 
-test('A cor da fonte dos links de navegação devem ser #FEFCFB', () => {
-  const nav = screen.getByRole("navigation");
-  const list = getAllByRole(nav, "link");
+test('A cor da fonte dos links "View full size" devem ter cor rgb(150, 140, 243) ', () => {
+  const list = screen.getAllByText("View full size");
   for (let item of list) {
     const styles =  window.getComputedStyle(item);
-    expect(styles.color).toBe('rgb(254, 252, 251)');
+    expect(styles.color).toBe('rgb(150, 140, 243)');
   }
 })
 
-test('A cor da fonte dos títulos das seções devem ser #001F54', () => {
-  const levels = [1, 2]
-  for (const level of levels) {
-    const list = screen.getAllByRole("heading", { level });
-    for (let item of list) {
-      const styles =  window.getComputedStyle(item);
-      expect(styles.color).toBe('rgb(0, 31, 84)');
-    }
-  }
-})
-
-
-test('O tamanho da fonte das datas dos artigos deve ser de 14px', () => {
-  const list = document.querySelectorAll("article p.date")
-  for (let item of list) {      
+test('As imagens da galeria deve possuir borda sólida de com branca com 15px de largura e arrendonda em 15 pixels', () => {
+  const list = screen.getAllByRole("figure");
+  for (let item of list) {
     const styles =  window.getComputedStyle(item);
-    expect(styles.fontSize).toBe('14px');
+    expect(styles.borderRadius).toBe('15px');
+    expect(styles.borderWidth).toBe('15px');
+    expect(styles.borderStyle).toBe('solid');
+    expect(styles.borderColor).toBe('white');
   }
 })
 
-test('O estilo da fonte das datas dos artigos deve ser de itálico', () => {
-  const list = document.querySelectorAll("article p.date")
-  for (let item of list) {      
+test('As imagens devem ocupar 100% da largura da tela e deve ter o plano de fundo na cor branca', () => {
+  let list = screen.getAllByRole("img");
+  for (let item of list) {
     const styles =  window.getComputedStyle(item);
-    expect(styles.fontStyle).toBe('italic');
+    expect(styles.width).toBe('100%');
+  }
+
+  list = screen.getAllByRole("figure");
+  for (let item of list) {
+    const styles =  window.getComputedStyle(item);
+    expect(styles.backgroundColor).toBe('white');
   }
 })
 
-test('A cor da fonte das datas dos artigos deve ser #034078', () => {
-  const list = document.querySelectorAll("article p.date")
-  for (let item of list) {      
+test('As imagens da galeria deve um sombreamento em ambos os eixos de 2 pixels, com blur de 15 pixels e espalhamento de 0 pixel', () => {
+  const list = screen.getAllByRole("figure");
+  for (let item of list) {
     const styles =  window.getComputedStyle(item);
-    expect(styles.color).toBe('rgb(3, 64, 120)');
+    expect(styles.boxShadow).toBe('5px 5px 15px 0px #9FA3A0');
   }
 })
 
-test('A cor do plano de fundo os itens ímpares da lista da seção Artigos em destaque devem ser na cor #B0E3F1', () => {
-  const list = document.querySelectorAll("#destaques > ul >li:nth-child(2n + 1)")
-  for (let item of list) {      
+
+test('O brilho das imagens devem ser aumentos em 20% quando o curso do mouse for posto sobre elas', () => {
+  let list = screen.getAllByRole("img");
+  for (let item of list) {
     const styles =  window.getComputedStyle(item);
-    expect(styles.backgroundColor).toBe('rgb(176, 227, 241)');
+    expect(styles.filter).toBe('brightness(1.2)');
   }
 })
 
-test('A cor da fonte dos links localizados dentro de um h3 devem ser #034078', () => {
-  const h3s = screen.getAllByRole("heading", { level: 3 });
-  for (const h3 of h3s) {
-    const item = getByRole(h3, "link");
-    const styles =  window.getComputedStyle(item);
-    expect(styles.color).toBe('rgb(18, 130, 162)');
-  }
-})
