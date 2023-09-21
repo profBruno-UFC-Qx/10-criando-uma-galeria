@@ -33,12 +33,12 @@ test("O título principal deve usar uma fonte cursiva e deve estar na cor #043a8
   expect(style.color).toBe("rgb(4, 58, 131)");
 })
 
-test("A cor do plano de fundo da página inteitra para *azure*", () => {
+test("A cor do plano de fundo da página inteira para azure", () => {
   let style =  window.getComputedStyle(document.body);
   expect(style.backgroundColor).toBe("azure");
 })
 
-test("A fonte das legendas da imagem devem ter o tamanho de *1.2em*, a cor #1c3072 e devem estar em negrito", () => {
+test("A fonte das legendas da imagem devem ter o tamanho de 1.2em, a cor #1c3072 e devem estar em negrito", () => {
   const captions = [
     screen.getByText("Lago del Mis, Sospirolo, BL, Italia"),
     screen.getByText("Intyamon, Rossinière, Switzerland"),
@@ -89,7 +89,7 @@ test('As imagens da galeria deve um sombreamento em ambos os eixos de 2 pixels, 
   const list = screen.getAllByRole("figure");
   for (let item of list) {
     const styles =  window.getComputedStyle(item);
-    expect(styles.boxShadow).toBe('5px 5px 15px 0px #9FA3A0');
+    expect(styles.boxShadow).toBe('5px 5px 15px 0 #9FA3A0');
   }
 })
 
